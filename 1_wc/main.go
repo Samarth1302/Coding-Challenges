@@ -7,13 +7,13 @@ import (
 )
 
 func main() {
+	//Declare flags and parse command-line arguments (name, value, usage)
 	countBytes := flag.Bool("c", false, "count bytes")
 	countLines := flag.Bool("l", false, "count lines")
 	countWords := flag.Bool("w", false, "count words")
 	countChars := flag.Bool("m", false, "count characters")
 
 	flag.Parse()
-
 	args := flag.Args()
 	if len(args) == 0 {
 		fmt.Println("Usage: go run main.go [flags] <filename>")
@@ -27,6 +27,7 @@ func main() {
 		os.Exit(1)
 	}
 
+	// If no flags are provided, count all
 	if !*countBytes && !*countLines && !*countWords && !*countChars {
 		*countBytes = true
 		*countLines = true
